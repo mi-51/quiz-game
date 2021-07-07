@@ -44,7 +44,6 @@ const quiz = [
 const quizLength = quiz.length;
 let quizIndex = 0;
 let score = 0;
-
 let $button = document.getElementsByTagName("button"); //変数の前に「$」をつけるのが主流
 const buttonLength = $button.length;
 
@@ -52,7 +51,7 @@ const buttonLength = $button.length;
 const setQuiz = () => {
   document.getElementById("js-question").textContent = quiz[quizIndex].question;
   let buttonIndex = 0;
-  let buttonLength = $button.length;
+  // let buttonLength = $button.length;
   while (buttonIndex < buttonLength) {
     $button[buttonIndex].textContent = quiz[quizIndex].answers[buttonIndex];
     buttonIndex++;
