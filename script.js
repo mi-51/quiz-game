@@ -53,13 +53,18 @@ const setQuiz = () => {
   let buttonIndex = 0;
   // let buttonLength = $button.length;
   while (buttonIndex < buttonLength) {
-    $button[buttonIndex].textContent = quiz[quizIndex].answers[buttonIndex];
+    if (buttonIndex < quiz[quizIndex].answers.length) {
+      $button[buttonIndex].textContent = quiz[quizIndex].answers[buttonIndex];
+      $button[buttonIndex].style.display = "inline";
+    } else {
+      $button[buttonIndex].style.display = "none";
+    }
     buttonIndex++;
   }
 }
 setQuiz();
 
-const clickHundler = (e) => {
+const clickHandler = (e) => {
   if (quiz[quizIndex].correct === e.target.textContent) {
     window.alert("正解！");
     score++;
@@ -82,7 +87,7 @@ const clickHundler = (e) => {
 let handleIndex = 0;
 while (handleIndex < buttonLength) {
   $button[handleIndex].addEventListener('click', (e) => {
-    clickHundler(e);
+    clickHandler(e);
   })
   handleIndex++;
 };

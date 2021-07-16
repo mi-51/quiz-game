@@ -118,3 +118,96 @@ Line48
 60  setQuiz();
       →関数「setQuiz」の呼び出し
 
+
+
+62行目〜79行 定数clickHandler関数の定義
+---------------------------------------------------------------------
+62  const clickHundler = (e) => {
+63    if (quiz[quizIndex].correct === e.target.textContent) {
+64      window.alert("正解！");
+65      score++;
+66    } else {
+67      window.alert('不正解');
+68    }
+69
+70    quizIndex++;
+71
+72    if (quizIndex < quizLength) {
+73      //問題数あり
+74      setQuiz();
+75    } else {
+76      //問題数なし
+77      window.alert("終了！あなたの正解数は" + score + "/" + quizLength + "です！");
+78    }
+79  };
+---------------------------------------------------------------------
+62  const clickHundler = (e) => {
+      アロー関数
+
+
+63  if (quiz[quizIndex].correct === e.target.textContent) {
+      →[quizIndex]で何番目の問題かを取得しそのクイズの正解と
+        クリックしたところに書かれている文字が同じならば
+
+
+64  window.alert("正解！");
+      →ウィンドウアラートに「正解！」と表示
+
+
+65  score++;
+      →scoreに＋1する
+
+
+66  } else {
+      →不正解の場合
+
+
+67   window.alert('不正解');    
+      →ウィンドウアラートに「不正解」と表示
+
+
+70  quizIndex++;
+      →そしてクイズの問題番号に＋1する
+
+
+72  if (quizIndex < quizLength) {
+      →もしクイズの問題数がクイズの長さより小さかったら
+
+
+74  setQuiz();               
+      →関数「setQuiz」の呼び出し
+
+
+75  window.alert("終了！あなたの正解数は" + score + "/" + quizLength + "です！");
+      →もし最後の問題だった時はウィンドウアラートに回答結果を表示
+
+
+
+82行目〜88行目 正誤判定
+--------------------------------------------------------------
+82  let handleIndex = 0;
+83  while (handleIndex < buttonLength) {
+84    $button[handleIndex].addEventListener('click', (e) => {
+85      clickHundler(e);
+86    })
+87    handleIndex++;
+88  };
+--------------------------------------------------------------
+82  let handleIndex = 0;
+      →変数handleIndexを0で定義
+
+
+83   while (handleIndex < buttonLength) {
+      →もしボタンの数がhandleIndexより大きい時は以下を繰り返す
+
+
+84  $button[handleIndex].addEventListener('click', (e) => {
+      →ボタンタグ取得
+
+
+85  clickHundler(e);
+      →clickHandler関数を呼び出し
+
+
+87  handleIndex++;
+      →handleIndexを＋1する            
